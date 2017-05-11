@@ -1694,7 +1694,7 @@ class WindowsUtils(base.BaseOSUtils):
         custom_options = [
             {'name': 'TeamMembers',
              'value_type': mi.MI_ARRAY | mi.MI_STRING,
-             'value': primary_network_adapter_name
+             'value': [primary_network_adapter_name]
             },
             {'name': 'TeamNicName',
              'value_type': mi.MI_STRING,
@@ -1713,7 +1713,7 @@ class WindowsUtils(base.BaseOSUtils):
                 netLbfoTeamMember.AdministrativeMode  = network.LBFO_BOND_ADMIN_MODE_STANDBY
             custom_options = [
                 {'name': 'Name',
-                 'value_type': mi.MI_ARRAY | mi.MI_STRING,
+                 'value_type': mi.MI_STRING,
                  'value': team_member
                 }
             ]
