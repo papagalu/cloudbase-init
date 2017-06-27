@@ -20,7 +20,7 @@ from cloudbaseinit.utils import classloader
 def get_config_drive_manager():
     class_paths = {
         'win32': 'cloudbaseinit.metadata.services.osconfigdrive.windows.'
-        'WindowsConfigDriveManager',
+        'WindowsConfigDriveManager'
     }
 
     class_path = class_paths.get(sys.platform)

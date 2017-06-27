@@ -13,6 +13,7 @@
 #    under the License.
 
 import os
+import subprocess
 
 from cloudbaseinit.osutils import base
 
@@ -21,3 +22,13 @@ class PosixUtils(base.BaseOSUtils):
 
     def reboot(self):
         os.system('reboot')
+
+    def set_host_name(self, new_hostname):
+        # os.system('hostname ' + new_hostname)
+        subprocess.call(['hostname', new_hostname])
+
+    def get_config_value(self, name, instance_id):
+        pass
+
+    def set_config_value(self, plugin_name, status, instance_id):
+        pass
