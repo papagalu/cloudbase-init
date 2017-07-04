@@ -27,10 +27,14 @@ def get_metadata_service():
     # Return the first service that loads correctly
     cl = classloader.ClassLoader()
     for class_path in CONF.metadata_services:
-        service = cl.load_class(class_path)()
         try:
+            if not class_path:
+                continue
+            service = cl.load_class(class_path)()
             if service.load():
                 return service
+        except AttributeError:
+            LOG.warn("Failed to load metadata service '%s'" % class_path)
         except Exception as ex:
             LOG.error("Failed to load metadata service '%s'" % class_path)
             LOG.exception(ex)
