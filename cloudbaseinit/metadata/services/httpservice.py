@@ -42,7 +42,8 @@ class HttpService(base.BaseHTTPMetadataService, baseos.BaseOpenStackService):
         try:
             self._get_meta_data()
             return True
-        except Exception:
+        except Exception as ex:
+            LOG.exception(ex)
             LOG.debug('Metadata not found at URL \'%s\'' %
                       CONF.openstack.metadata_base_url)
             return False
